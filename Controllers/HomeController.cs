@@ -21,33 +21,6 @@ namespace DemoMVC.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public IActionResult SendEmail()
-        {
-            try
-            {
-            MailMessage mailMessage = new MailMessage();
-            mailMessage.From = new MailAddress(Request.Form["From"]);
-            mailMessage.To.Add(Request.Form["To"]);
-            mailMessage.Subject = Request.Form["Subject"];
-            mailMessage.Body = "<h1>This is body</h1>";
-            mailMessage.IsBodyHtml = true;
-            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587)
-            {
-                Credentials = new NetworkCredential(Request.Form["From"], "Charan#7090"),
-                EnableSsl = true,
-            };
-            smtpClient.Send(mailMessage);
-                mailMessage.Dispose();
-                smtpClient.Dispose();
-
-            } catch (Exception ex)
-            {
-                //Handle EXCEPTOPN
-            }
-            
-            return View("Index");
-        }
 
 
         public IActionResult Privacy()
