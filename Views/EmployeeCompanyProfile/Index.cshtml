@@ -1,0 +1,14 @@
+﻿@model IEnumerable<DemoMVC.Models.EmployeeCompanyProfile>;
+
+
+@{
+    ViewBag.Title = "Employee Details";
+}
+
+@foreach (var item in Model)
+{
+    <div>
+        @item.EmplyeeNumber
+        <hr />
+    </div>
+}
